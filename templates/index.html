@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Medical Diagnosis Engine</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="main-container">
+
+
+<div class="header">
+
+<h1>🩺 AI Medical Diagnosis Engine</h1>
+
+<p>
+Disease Prediction using Bayes Rule
+</p>
+
+</div>
+
+
+
+<form action="/predict" method="POST">
+
+
+<div class="section">
+
+
+<h2>👤 Patient Information</h2>
+
+
+<div class="input-group">
+
+
+<input type="text"
+name="name"
+placeholder="Patient Name"
+required>
+
+
+<input type="number"
+name="age"
+placeholder="Age"
+required>
+
+
+</div>
+
+
+
+<h3>Gender</h3>
+
+
+<div class="gender-box">
+
+
+<label>
+<input type="radio"
+name="gender"
+value="Male"
+required>
+♂ Male
+</label>
+
+
+<label>
+<input type="radio"
+name="gender"
+value="Female">
+♀ Female
+</label>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="section">
+
+
+<h2>🧬 Select Symptoms</h2>
+
+
+
+
+<h3>🌡 General Symptoms</h3>
+
+
+<div class="symptom-grid">
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Fever">
+Fever
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Fatigue">
+Fatigue
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Weakness">
+Weakness
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Chills">
+Chills
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Sweating">
+Sweating
+</label>
+
+
+</div>
+
+
+
+
+
+<h3>🫁 Respiratory Symptoms</h3>
+
+
+<div class="symptom-grid">
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Cough">
+Cough
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Sneezing">
+Sneezing
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Sore Throat">
+Sore Throat
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Breathing Difficulty">
+Breathing Difficulty
+</label>
+
+
+</div>
+
+
+
+
+
+<h3>🤕 Pain Symptoms</h3>
+
+
+<div class="symptom-grid">
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Headache">
+Headache
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Body Pain">
+Body Pain
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Chest Pain">
+Chest Pain
+</label>
+
+
+</div>
+
+
+
+
+
+<h3>🍽 Other Symptoms</h3>
+
+
+<div class="symptom-grid">
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Stomach Pain">
+Stomach Pain
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Loss of Taste">
+Loss of Taste
+</label>
+
+
+<label>
+<input type="checkbox"
+name="symptoms"
+value="Nausea">
+Nausea
+</label>
+
+
+</div>
+
+
+
+
+
+<hr>
+
+
+
+<h2>➕ Add Additional Symptoms</h2>
+
+
+<input type="text"
+id="customInput"
+placeholder="Search or type another symptom">
+
+
+
+<button type="button"
+onclick="addSymptom()">
+
+Add Symptom
+
+</button>
+
+
+
+<div id="customList">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<button type="submit">
+
+🔍 Analyze Disease Probability
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+function addSymptom(){
+
+
+let input =
+document.getElementById("customInput");
+
+
+let symptom =
+input.value.trim();
+
+
+
+if(symptom !== ""){
+
+
+let container =
+document.getElementById("customList");
+
+
+
+container.innerHTML += `
+
+<label>
+
+<input type="checkbox"
+name="symptoms"
+value="${symptom}"
+checked>
+
+${symptom}
+
+</label>
+
+<br>
+
+`;
+
+
+
+input.value="";
+
+
+}
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>

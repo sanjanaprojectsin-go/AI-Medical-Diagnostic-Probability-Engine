@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Diagnosis Report</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="main-container">
+
+
+<div class="header">
+
+<h1>🩺 AI Diagnosis Report</h1>
+
+<p>
+Bayesian Medical Probability Analysis
+</p>
+
+</div>
+
+
+
+<div class="section">
+
+
+<h2>👤 Patient Information</h2>
+
+
+<div class="patient-card">
+
+<p><b>Name:</b> {{name}}</p>
+
+<p><b>Age:</b> {{age}}</p>
+
+<p><b>Gender:</b> {{gender}}</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="section">
+
+
+<h2>🔬 Predicted Condition</h2>
+
+
+<div class="prediction-box">
+
+<h1>
+{{disease}}
+</h1>
+
+<p>
+Highest probability condition based on entered symptoms
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="section">
+
+
+<h2>📊 Probability Distribution</h2>
+
+
+
+{% for d,p in probabilities.items() %}
+
+
+<div class="probability">
+
+
+<div class="prob-title">
+
+<span>{{d}}</span>
+
+<span>{{p}}%</span>
+
+</div>
+
+
+
+<div class="progress">
+
+<div class="progress-fill"
+style="width:{{p}}%">
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+
+<a href="/" class="back-button">
+
+⬅ Check Another Patient
+
+</a>
+
+
+
+</div>
+
+
+</body>
+
+</html>
